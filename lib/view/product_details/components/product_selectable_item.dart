@@ -36,18 +36,34 @@ class ProductSelectableItem extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           border: Border.all(
-            color: _isEnabled(item.status) ? Colors.grey : Colors.red,
-            width: 2.0,
+            color: Colors.grey,
           ),
           borderRadius: BorderRadius.circular(8.0),
-          color: selected ? Colors.blue : Colors.white,
+          color: !_isEnabled(item.status)
+              ? Colors.orange[100]
+              : (selected ? Colors.orange : Colors.white),
+          boxShadow: selected
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 10.0,
+                    spreadRadius: 1.0,
+                    offset: const Offset(0, 1),
+                  )
+                ]
+              : null,
         ),
-        child: Text(
-          item.number.toString(),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16.0,
-            color: selected ? Colors.white : Colors.black,
+        child: Center(
+          child: Text(
+            item.number.toString(),
+            style: TextStyle(
+              fontWeight:
+                  _isEnabled(item.status) ? FontWeight.bold : FontWeight.normal,
+              fontSize: 16.0,
+              color: !_isEnabled(item.status)
+                  ? Colors.grey
+                  : (selected ? Colors.white : Colors.black),
+            ),
           ),
         ),
       ),

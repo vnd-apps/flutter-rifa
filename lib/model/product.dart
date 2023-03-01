@@ -49,9 +49,7 @@ class Product {
       images: List<String>.from(data['attributes']['product']['data']
               ['attributes']['images']['data']
           .map((image) => image['attributes']['url'])),
-      items: List<Item>.from(data['attributes']['product']['data']['attributes']
-              ['items']
-          .map((val) => Item.fromJson(val))));
+      items: []);
 
   factory Product.productFromJson(Map<String, dynamic> data) => Product(
       id: data['id'],

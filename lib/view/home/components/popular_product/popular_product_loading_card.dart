@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -21,13 +20,12 @@ class PopularProductLoadingCard extends StatelessWidget {
             width: 120,
             child: Column(
               children: [
-                AspectRatio(aspectRatio: 0.9,
+                AspectRatio(
+                  aspectRatio: 0.9,
                   child: Container(
                     color: Colors.grey,
                     padding: const EdgeInsets.all(15),
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 25
-                    ),
+                    margin: const EdgeInsets.symmetric(horizontal: 25),
                   ),
                 ),
                 const SizedBox(height: 10),

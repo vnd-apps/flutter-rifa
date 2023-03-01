@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_grocery/const.dart';
@@ -22,7 +20,7 @@ class _CategoryCardState extends State<CategoryCard> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           setState(() {
             _selected = !_selected;
           });
@@ -40,8 +38,8 @@ class _CategoryCardState extends State<CategoryCard> {
               decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(image: imageProvider, fit: BoxFit.cover)
-              ),
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -54,33 +52,32 @@ class _CategoryCardState extends State<CategoryCard> {
                         style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold
-                        ),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         dashboardController.updateIndex(1);
-                        productController.searchTextEditController.text = 'cat: ${widget.category.name}';
-                        productController.searchVal.value = 'cat: ${widget.category.name}';
-                        productController.getProductByCategory(id: widget.category.id);
+                        productController.searchTextEditController.text =
+                            'cat: ${widget.category.name}';
+                        productController.searchVal.value =
+                            'cat: ${widget.category.name}';
+                        productController.getProductByCategory(
+                            id: widget.category.id);
                       },
                       child: Container(
                         decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.6),
-                            borderRadius: const BorderRadius.all(Radius.circular(24))
-                        ),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(24))),
                         child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 8
-                          ),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           child: Text(
                             'View more',
                             style: TextStyle(
                                 color: Colors.black54,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -98,9 +95,8 @@ class _CategoryCardState extends State<CategoryCard> {
                 child: Container(
                   width: double.infinity,
                   height: 140,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -114,19 +110,16 @@ class _CategoryCardState extends State<CategoryCard> {
                         Container(
                           decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.6),
-                              borderRadius: const BorderRadius.all(Radius.circular(24))
-                          ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(24))),
                           child: const Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 8
-                            ),
+                                horizontal: 16, vertical: 8),
                             child: Text(
                               'View more',
                               style: TextStyle(
                                   color: Colors.black54,
-                                  fontWeight: FontWeight.bold
-                              ),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         )
@@ -144,9 +137,8 @@ class _CategoryCardState extends State<CategoryCard> {
               width: double.infinity,
               height: 140,
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(12)
-              ),
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(12)),
               child: const Center(
                 child: Icon(
                   Icons.error_outline,

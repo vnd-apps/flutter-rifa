@@ -63,13 +63,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Wrap(
-                spacing: 2,
-                runSpacing: 2,
+                spacing: 4,
+                runSpacing: 4,
                 children: widget.product.items
                     .map((item) => SizedBox(
-                          width: MediaQuery.of(context).size.width / 5 - 2 * 2,
+                          width: MediaQuery.of(context).size.width / 5 - 20,
                           child: ProductSelectableItem(
                             item: item,
                             selected: _itemSelectedMap[item.id] ?? false,
