@@ -6,7 +6,7 @@ part "cart.g.dart";
 @HiveType(typeId: 5)
 class CartItem {
   @HiveField(0)
-  final String userID;
+  final int userID;
   @HiveField(1)
   final Product product;
 

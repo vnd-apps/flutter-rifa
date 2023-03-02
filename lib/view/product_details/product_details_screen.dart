@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_grocery/view/product_details/components/product_selectable_item.dart';
 
+import '../../controller/controllers.dart';
 import '../../model/product.dart';
+import '../account/auth/sign_in_screen.dart';
 import 'components/product_carousel_slider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -109,7 +111,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             backgroundColor: MaterialStateProperty.all<Color>(
                 Theme.of(context).primaryColor),
           ),
-          onPressed: () {},
+          onPressed: () {
+            try {
+              if (authController.getUser() != null) {
+                cartController.addCart(
+                    product: widget.product,
+                    userID: authController.user.value!.id);
+                Navigator.of(context).pop();
+              } else {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignInScreen()));
+              }
+            } finally {}
+          },
           child: const Padding(
             padding: EdgeInsets.all(6.0),
             child: Text(

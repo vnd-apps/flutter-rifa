@@ -8,18 +8,38 @@ class CartController extends GetxController {
   static CartController instance = Get.find();
   RxList<CartItem> cartItemList = List<CartItem>.empty(growable: true).obs;
   RxBool isCartLoading = false.obs;
+  final LocalCartService _localCartService = LocalCartService();
+
+  @override
+  void onInit() async {
+    await _localCartService.init();
+    getCart();
+    super.onInit();
+  }
 
   void addCart({
     required Product product,
+    required int userID,
   }) async {
     try {
-      LocalCartService().addToCart(
+      _localCartService.addToCart(
         cartItem: CartItem(
           product: product,
-          userID: "1234",
+          userID: userID,
         ),
       );
     } finally {}
+  }
+
+  void getCart() async {
+    try {
+      isCartLoading(true);
+      if (_localCartService.cartItems().isNotEmpty) {
+        cartItemList.assignAll(_localCartService.cartItems());
+      }
+    } finally {
+      isCartLoading(false);
+    }
   }
 
   double getCartTotal() {
@@ -34,8 +54,7 @@ class CartController extends GetxController {
 
   void removeCart({required Product product}) {
     try {
-      LocalCartService()
-          .removeFromCart(cartItem: CartItem(userID: "1234", product: product));
+      _localCartService.removeFromCart(productID: product.id);
     } finally {}
   }
 }

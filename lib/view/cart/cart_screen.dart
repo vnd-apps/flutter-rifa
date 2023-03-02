@@ -72,6 +72,7 @@ class _CartScreenState extends State<CartScreen> {
           return RefreshIndicator(
             color: Theme.of(context).primaryColor,
             onRefresh: () async {
+              cartController.getCart();
               return Future.delayed(const Duration(seconds: 1));
             },
             child: ListView.builder(

@@ -13,9 +13,9 @@ class LocalCartService {
     await _cartBox.put(cartItem.product.id, cartItem);
   }
 
-  Future<void> removeFromCart({required CartItem cartItem}) async {
-    await _cartBox.delete(cartItem.product.id);
+  Future<void> removeFromCart({required int productID}) async {
+    await _cartBox.delete(productID);
   }
 
-  List<CartItem> get cartItems => _cartBox.values.toList();
+  List<CartItem> cartItems() => _cartBox.values.toList();
 }

@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_grocery/model/ad_banner.dart';
 import 'package:my_grocery/model/category.dart';
+import 'package:my_grocery/model/item.dart';
 import 'package:my_grocery/model/product.dart';
 import 'package:my_grocery/model/user.dart';
 import 'package:my_grocery/route/app_page.dart';
 import 'package:my_grocery/route/app_route.dart';
 import 'package:my_grocery/theme/app_theme.dart';
+
+import 'model/cart.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +22,8 @@ void main() async {
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProductAdapter());
   Hive.registerAdapter(UserAdapter());
+  Hive.registerAdapter(CartItemAdapter());
+  Hive.registerAdapter(ItemAdapter());
 
   configLoading();
   runApp(const MyApp());
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void configLoading(){
+void configLoading() {
   EasyLoading.instance
     ..displayDuration = const Duration(milliseconds: 2000)
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle

@@ -4,6 +4,7 @@ import 'package:my_grocery/model/category.dart';
 import 'package:my_grocery/model/product.dart';
 import 'package:my_grocery/service/local_service/local_ad_banner_service.dart';
 import 'package:my_grocery/service/local_service/local_product_service.dart';
+import 'package:my_grocery/service/local_service/local_cart_service.dart';
 import 'package:my_grocery/service/remote_service/remote_banner_service.dart';
 import 'package:my_grocery/service/remote_service/remote_popular_category_service.dart';
 

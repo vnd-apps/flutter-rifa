@@ -95,4 +95,9 @@ class AuthController extends GetxController {
   String? getToken() {
     return _localAuthService.getToken();
   }
+
+  User? getUser() {
+    user.value = _localAuthService.getUser();
+    return user.value;
+  }
 }

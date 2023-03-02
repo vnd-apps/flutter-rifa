@@ -138,9 +138,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   title: "Sign Up",
                   onClick: () {
                     if (_formKey.currentState!.validate()) {
-                      authController.signUp(fullName: fullNameController.text,
-                          email: emailController.text,
-                          password: passwordController.text,
+                      authController.signUp(
+                        fullName: fullNameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
                       );
                     }
                   },
