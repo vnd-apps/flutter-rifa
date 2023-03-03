@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 
 import '../../../const.dart';
 import '../../../model/cart.dart';
@@ -42,19 +43,25 @@ class CartCard extends StatelessWidget {
               maxLines: 2,
             ),
             const SizedBox(height: 10),
-            Text.rich(
-              TextSpan(
-                text: "\$ ${cartItem.product.price.toStringAsFixed(2)}",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).primaryColor),
-                children: [
-                  TextSpan(
-                    text: " x ${cartItem.product.items.length}",
-                  ),
-                ],
-              ),
-            )
+            Wrap(
+              children: cartItem.product.items
+                  .mapIndexed(
+                    (index, item) => Text.rich(
+                      TextSpan(
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).primaryColor),
+                        children: [
+                          TextSpan(
+                            text:
+                                "${item.number.toString()} ${index == cartItem.product.items.length - 1 ? " x ${cartItem.product.price.toStringAsFixed(2)}" : "|"} ",
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
           ],
         )
       ],

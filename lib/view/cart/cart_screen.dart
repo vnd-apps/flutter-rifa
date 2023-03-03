@@ -33,7 +33,8 @@ class _CartScreenState extends State<CartScreen> {
             onRefresh: () async {
               return Future.delayed(const Duration(seconds: 1));
             },
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => const Divider(),
               itemCount: cartController.cartItemList.length,
               physics: const AlwaysScrollableScrollPhysics(
                   parent: BouncingScrollPhysics()),
@@ -75,7 +76,11 @@ class _CartScreenState extends State<CartScreen> {
               cartController.getCart();
               return Future.delayed(const Duration(seconds: 1));
             },
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => const Divider(
+                height: 2,
+                color: Colors.orange,
+              ),
               itemCount: cartController.cartItemList.length,
               physics: const AlwaysScrollableScrollPhysics(
                   parent: BouncingScrollPhysics()),

@@ -70,15 +70,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 spacing: 4,
                 runSpacing: 4,
                 children: widget.product.items
-                    .map((item) => SizedBox(
-                          width: MediaQuery.of(context).size.width / 5 - 20,
-                          child: ProductSelectableItem(
-                            item: item,
-                            selected: _itemSelectedMap[item.id] ?? false,
-                            onSelected: (selected) =>
-                                _onItemSelected(item.id, selected),
-                          ),
-                        ))
+                    .map(
+                      (item) => SizedBox(
+                        width: MediaQuery.of(context).size.width / 5 - 20,
+                        child: ProductSelectableItem(
+                          item: item,
+                          selected: _itemSelectedMap[item.id] ?? false,
+                          onSelected: (selected) =>
+                              _onItemSelected(item.id, selected),
+                        ),
+                      ),
+                    )
                     .toList(),
               ),
             ),
