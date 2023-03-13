@@ -25,7 +25,7 @@ class ProductSelectableItem extends StatelessWidget {
   }
 
   bool _isEnabled(String status) {
-    return status == 'Open';
+    return status == 'available';
   }
 
   @override

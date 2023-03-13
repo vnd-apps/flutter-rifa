@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:my_grocery/model/product.dart';
@@ -9,6 +11,16 @@ class ProductController extends GetxController {
   RxString searchVal = ''.obs;
   RxList<Product> productList = List<Product>.empty(growable: true).obs;
   RxBool isProductLoading = false.obs;
+  RxBool isProductDetailLoading = false.obs;
+  Rx<Product> product = Product(
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    images: [],
+    items: [],
+    status: '',
+  ).obs;
 
   @override
   void onInit() {
@@ -39,6 +51,19 @@ class ProductController extends GetxController {
     } finally {
       isProductLoading(false);
       print(productList.length);
+    }
+  }
+
+  void getProductByID({required int id}) async {
+    try {
+      isProductDetailLoading(true);
+      var result = await RemoteProductService().getByID(id: id);
+      if (result != null) {
+        product.value =
+            Product.productFromJson(json.decode(result.body)['data']);
+      }
+    } finally {
+      isProductDetailLoading(false);
     }
   }
 

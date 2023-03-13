@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_grocery/const.dart';
+import 'package:my_grocery/controller/controllers.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../model/product.dart';
@@ -14,11 +16,10 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        productController.getProductByID(id: product.id);
+
         FocusScope.of(context).requestFocus(FocusNode());
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ProductDetailsScreen(product: product)));
+        Get.to(() => const ProductDetailsScreen());
       },
       child: Material(
         elevation: 8,

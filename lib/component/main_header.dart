@@ -81,8 +81,7 @@ class MainHeader extends StatelessWidget {
           const SizedBox(width: 10),
           InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const CartScreen()));
+              Get.to(() => const CartScreen());
             },
             child: Obx(() => badges.Badge(
                   badgeContent: Text(

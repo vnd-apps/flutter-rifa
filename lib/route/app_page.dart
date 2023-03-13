@@ -8,7 +8,6 @@ class AppPage {
     GetPage(
         name: AppRoute.dashboard,
         page: () => const DashboardScreen(),
-        binding: DashboardBinding()
-    ),
+        binding: DashboardBinding()),
   ];
 }
