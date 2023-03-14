@@ -1,13 +1,38 @@
-import 'package:hive/hive.dart';
-
-part 'checkout.g.dart';
-
-@HiveType(typeId: 6)
 class Checkout {
-  @HiveField(0)
-  final List<String> products;
+  final List<CheckoutItem> checkoutItems;
+
+  Map toJson() => {
+        "products": checkoutItems.map((e) => e.toJson()).toList(),
+      };
 
   Checkout({
-    required this.products,
+    required this.checkoutItems,
   });
+}
+
+class CheckoutItem {
+  final int productID;
+  final List<Number> numbers;
+
+  CheckoutItem({
+    required this.productID,
+    required this.numbers,
+  });
+
+  Map toJson() => {
+        "id": productID,
+        "items": numbers,
+      };
+}
+
+class Number {
+  final int number;
+
+  Number({
+    required this.number,
+  });
+
+  Map toJson() => {
+        "number": number,
+      };
 }

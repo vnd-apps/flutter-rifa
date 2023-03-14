@@ -5,7 +5,6 @@ import 'package:my_grocery/view/product_details/components/product_details_loadi
 import 'package:my_grocery/view/product_details/components/product_selectable_item.dart';
 
 import '../../controller/controllers.dart';
-import '../../model/product.dart';
 import '../account/auth/sign_in_screen.dart';
 import 'components/product_carousel_slider.dart';
 
@@ -24,7 +23,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   void initState() {
     super.initState();
     _itemSelectedMap = {
-      for (var item in productController.product.value.items) item.id: false
+      for (var item in productController.product.value.items) item.number: false
     };
   }
 
@@ -81,9 +80,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     MediaQuery.of(context).size.width / 5 - 20,
                                 child: ProductSelectableItem(
                                   item: item,
-                                  selected: _itemSelectedMap[item.id] ?? false,
+                                  selected:
+                                      _itemSelectedMap[item.number] ?? false,
                                   onSelected: (selected) =>
-                                      _onItemSelected(item.id, selected),
+                                      _onItemSelected(item.number, selected),
                                 ),
                               ),
                             )
@@ -126,6 +126,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       if (authController.getUser() != null) {
                         cartController.addCart(
                             product: productController.product.value,
+                            selectedItems: _itemSelectedMap,
                             userID: authController.user.value!.id);
                         Navigator.of(context).pop();
                       } else {

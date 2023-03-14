@@ -9,9 +9,12 @@ class CartItem {
   final int userID;
   @HiveField(1)
   final Product product;
+  @HiveField(2)
+  final List<int> selectedItems;
 
   CartItem({
     required this.userID,
     required this.product,
+    required this.selectedItems,
   });
 }

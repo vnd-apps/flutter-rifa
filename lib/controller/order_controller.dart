@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
-import 'package:my_grocery/controller/auth_controller.dart';
+import 'package:my_grocery/controller/controllers.dart';
 import 'package:my_grocery/service/remote_service/remote_order_service.dart';
-import 'package:my_grocery/model/checkout.dart';
 import 'package:my_grocery/model/order.dart';
+
+import '../model/checkout.dart';
 
 class OrderController extends GetxController {
   static OrderController instance = Get.find();
-  final authController = Get.find<AuthController>();
   RxList<Order> orderList = List<Order>.empty(growable: true).obs;
   RxBool isOrderLoading = false.obs;
 
   @override
   void onInit() {
-    getOrders(token: authController.getToken());
+    // getOrders(token: authController.getToken());
     super.onInit();
   }
 
@@ -25,6 +25,19 @@ class OrderController extends GetxController {
       }
     } finally {
       isOrderLoading(false);
+      print(orderList.length);
+    }
+  }
+
+  void createOrder({required String token, required Checkout checkout}) async {
+    try {
+      var result =
+          await RemoteOrderService().create(token: token, checkout: checkout);
+      if (result != null) {
+        orderList.add(Order.fromJson(result.body));
+      }
+    } finally {
+      cartController.clearCart();
       print(orderList.length);
     }
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_grocery/component/input_text_button.dart';
 import 'package:my_grocery/controller/controllers.dart';
+import 'package:my_grocery/model/checkout.dart';
 import 'package:shimmer/shimmer.dart';
 
 import './components/cart_card.dart';
@@ -45,7 +46,8 @@ class _CartScreenState extends State<CartScreen> {
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
                     setState(() {
-                      // cartController.removeCart(index: index, itemId: cartController.cartItemList[index].);
+                      cartController.removeCart(
+                          product: cartController.cartItemList[index].product);
                     });
                   },
                   background: Container(
@@ -176,11 +178,33 @@ class _CartScreenState extends State<CartScreen> {
               SizedBox(
                   height: 50,
                   width: 140,
-                  child: InputTextButton(title: "Checkout", onClick: () {}))
+                  child: InputTextButton(
+                      title: "Checkout", onClick: () => generateOrder()))
             ],
           ),
         ),
       ),
     );
+  }
+
+  void generateOrder() {
+    if (cartController.cartItemList.isNotEmpty) {
+      Checkout checkout = Checkout(
+        checkoutItems: cartController.cartItemList
+            .map(
+              (e) => CheckoutItem(
+                productID: e.product.id,
+                numbers: e.selectedItems
+                    .map((entry) => Number(number: entry))
+                    .toList(),
+              ),
+            )
+            .toList(),
+      );
+      orderController.createOrder(
+          token: authController.getToken()!, checkout: checkout);
+    } else {
+      Get.snackbar("Cart is empty", "Please add some items to cart");
+    }
   }
 }

@@ -18,4 +18,8 @@ class LocalCartService {
   }
 
   List<CartItem> cartItems() => _cartBox.values.toList();
+
+  Future<void> clear() async {
+    await _cartBox.clear();
+  }
 }

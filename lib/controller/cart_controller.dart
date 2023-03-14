@@ -20,12 +20,17 @@ class CartController extends GetxController {
   void addCart({
     required Product product,
     required int userID,
+    required Map<int, bool> selectedItems,
   }) async {
     try {
       _localCartService.addToCart(
         cartItem: CartItem(
           product: product,
           userID: userID,
+          selectedItems: selectedItems.entries
+              .where((element) => element.value)
+              .map((e) => e.key)
+              .toList(),
         ),
       );
     } finally {}
@@ -34,9 +39,7 @@ class CartController extends GetxController {
   void getCart() async {
     try {
       isCartLoading(true);
-      if (_localCartService.cartItems().isNotEmpty) {
-        cartItemList.assignAll(_localCartService.cartItems());
-      }
+      cartItemList.assignAll(_localCartService.cartItems());
     } finally {
       isCartLoading(false);
     }
@@ -56,5 +59,9 @@ class CartController extends GetxController {
     try {
       _localCartService.removeFromCart(productID: product.id);
     } finally {}
+  }
+
+  void clearCart() {
+    _localCartService.clear();
   }
 }

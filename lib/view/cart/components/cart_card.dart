@@ -44,7 +44,7 @@ class CartCard extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Wrap(
-              children: cartItem.product.items
+              children: cartItem.selectedItems
                   .mapIndexed(
                     (index, item) => Text.rich(
                       TextSpan(
@@ -54,7 +54,7 @@ class CartCard extends StatelessWidget {
                         children: [
                           TextSpan(
                             text:
-                                "${item.number.toString()} ${index == cartItem.product.items.length - 1 ? " x ${cartItem.product.price.toStringAsFixed(2)}" : "|"} ",
+                                "${item.toString()} ${index == cartItem.selectedItems.length - 1 ? " x ${cartItem.product.price.toStringAsFixed(2)}" : "|"} ",
                           ),
                         ],
                       ),

@@ -19,17 +19,20 @@ class CartItemAdapter extends TypeAdapter<CartItem> {
     return CartItem(
       userID: fields[0] as int,
       product: fields[1] as Product,
+      selectedItems: (fields[2] as List).cast<int>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, CartItem obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.userID)
       ..writeByte(1)
-      ..write(obj.product);
+      ..write(obj.product)
+      ..writeByte(2)
+      ..write(obj.selectedItems);
   }
 
   @override

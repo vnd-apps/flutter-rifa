@@ -2,6 +2,7 @@ import 'package:my_grocery/controller/auth_controller.dart';
 import 'package:my_grocery/controller/cart_controller.dart';
 import 'package:my_grocery/controller/category_controller.dart';
 import 'package:my_grocery/controller/home_controller.dart';
+import 'package:my_grocery/controller/order_controller.dart';
 import 'package:my_grocery/controller/product_controller.dart';
 
 import 'dashboard_controller.dart';
@@ -12,3 +13,4 @@ DashboardController dashboardController = DashboardController.instance;
 CategoryController categoryController = CategoryController.instance;
 AuthController authController = AuthController.instance;
 CartController cartController = CartController.instance;
+OrderController orderController = OrderController.instance;
