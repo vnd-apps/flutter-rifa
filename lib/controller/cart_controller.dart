@@ -33,7 +33,9 @@ class CartController extends GetxController {
               .toList(),
         ),
       );
-    } finally {}
+    } finally {
+      getCart();
+    }
   }
 
   void getCart() async {
@@ -58,7 +60,9 @@ class CartController extends GetxController {
   void removeCart({required Product product}) {
     try {
       _localCartService.removeFromCart(productID: product.id);
-    } finally {}
+    } finally {
+      getCart();
+    }
   }
 
   void clearCart() {

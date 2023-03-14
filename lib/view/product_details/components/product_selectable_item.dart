@@ -40,7 +40,7 @@ class ProductSelectableItem extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(8.0),
           color: !_isEnabled(item.status)
-              ? Colors.orange[100]
+              ? Colors.grey
               : (selected ? Colors.orange : Colors.white),
           boxShadow: selected
               ? [
@@ -61,7 +61,7 @@ class ProductSelectableItem extends StatelessWidget {
                   _isEnabled(item.status) ? FontWeight.bold : FontWeight.normal,
               fontSize: 16.0,
               color: !_isEnabled(item.status)
-                  ? Colors.grey
+                  ? Colors.white70
                   : (selected ? Colors.white : Colors.black),
             ),
           ),

@@ -42,13 +42,11 @@ class _CartScreenState extends State<CartScreen> {
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
                 child: Dismissible(
-                  key: Key(UniqueKey().toString()),
+                  key: ValueKey(cartController.cartItemList[index].product),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
-                    setState(() {
-                      cartController.removeCart(
-                          product: cartController.cartItemList[index].product);
-                    });
+                    cartController.removeCart(
+                        product: cartController.cartItemList[index].product);
                   },
                   background: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,12 +87,11 @@ class _CartScreenState extends State<CartScreen> {
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
                 child: Dismissible(
-                  key: Key(UniqueKey().toString()),
+                  key: ValueKey(cartController.cartItemList[index].product),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
-                    setState(() {
-                      // cartController.removeCart(index);
-                    });
+                    cartController.removeCart(
+                        product: cartController.cartItemList[index].product);
                   },
                   background: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
