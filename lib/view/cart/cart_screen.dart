@@ -6,7 +6,7 @@ import 'package:my_grocery/model/checkout.dart';
 import 'package:shimmer/shimmer.dart';
 
 import './components/cart_card.dart';
-import './components/cart_loading_card.dart';
+import 'components/cart_loading.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -28,47 +28,8 @@ class _CartScreenState extends State<CartScreen> {
         elevation: 1,
       ),
       body: Obx(() {
-        if (cartController.isCartLoading.value) {
-          return RefreshIndicator(
-            color: Theme.of(context).primaryColor,
-            onRefresh: () async {
-              return Future.delayed(const Duration(seconds: 1));
-            },
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const Divider(),
-              itemCount: cartController.cartItemList.length,
-              physics: const AlwaysScrollableScrollPhysics(
-                  parent: BouncingScrollPhysics()),
-              itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                child: Dismissible(
-                  key: ValueKey(cartController.cartItemList[index].product),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (direction) {
-                    cartController.removeCart(
-                        product: cartController.cartItemList[index].product);
-                  },
-                  background: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFE6E6),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      children: [
-                        const Spacer(),
-                        Icon(
-                          Icons.delete_outline,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  child: const CartLoadingCard(),
-                ),
-              ),
-            ),
-          );
+        if (cartController.isCartLoading.isTrue) {
+          return const CartLoading();
         } else {
           return RefreshIndicator(
             color: Theme.of(context).primaryColor,
