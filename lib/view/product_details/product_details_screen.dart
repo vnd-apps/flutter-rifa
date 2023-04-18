@@ -91,6 +91,60 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
+                    Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          height: 10,
+                          width: 300, // set a fixed height for the row
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 7,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          const BorderRadius.horizontal(
+                                        left: Radius.circular(10),
+                                      ),
+                                      color: Colors.green[800]),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 8,
+                                child: Container(
+                                  color: Colors.green[300],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 23,
+                                child: Container(
+                                  color: Colors.yellow[700],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 7,
+                                child: Container(
+                                  color: Colors.orange[700],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 55,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          const BorderRadius.horizontal(
+                                        right: Radius.circular(10),
+                                      ),
+                                      color: Colors.red[800]),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Text(

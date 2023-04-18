@@ -5,8 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class BannerCard extends StatelessWidget {
   final String imageUrl;
-  const BannerCard({Key? key,
-  required this.imageUrl}) : super(key: key);
+  const BannerCard({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +14,26 @@ class BannerCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: CachedNetworkImage(
-            imageUrl: '$baseUrl$imageUrl',
+          imageUrl: imageUrl,
           progressIndicatorBuilder: (context, url, downloadProgress) =>
               Shimmer.fromColors(
-                highlightColor: Colors.white,
-                baseColor: Colors.grey.shade300,
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                  ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    child: AspectRatio(
-                      aspectRatio: 16/9,
-                      child: Container(
-                        color: Colors.grey,
-                      ),
-                    ),
+            highlightColor: Colors.white,
+            baseColor: Colors.grey.shade300,
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Container(
+                    color: Colors.grey,
                   ),
                 ),
               ),
+            ),
+          ),
           fit: BoxFit.cover,
           width: double.infinity,
         ),

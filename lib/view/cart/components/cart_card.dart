@@ -23,7 +23,7 @@ class CartCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: CachedNetworkImage(
-                  imageUrl: baseUrl + cartItem.product.images.first,
+                  imageUrl: cartItem.product.images.first,
                   errorWidget: (context, url, error) => const Center(
                     child: Icon(
                       Icons.error_outline,
