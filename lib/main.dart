@@ -1,7 +1,10 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:my_grocery/model/ad_banner.dart';
 import 'package:my_grocery/model/category.dart';
 import 'package:my_grocery/model/item.dart';
@@ -26,6 +29,30 @@ void main() async {
   Hive.registerAdapter(ItemAdapter());
 
   configLoading();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    announcement: true,
+    badge: true,
+    carPlay: true,
+    criticalAlert: true,
+    provisional: true,
+    sound: true,
+  );
+
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    print('User granted permission');
+  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    print('User granted provisional permission');
+  } else {
+    print('User declined or has not accepted permission');
+  }
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print(fcmToken);
   runApp(const MyApp());
 }
 
