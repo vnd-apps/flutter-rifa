@@ -40,130 +40,134 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ? const ProductDetailsLoading()
           : Scaffold(
               body: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ProductCarouselSlider(
-                      images: productController.product.value.images,
-                    ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        productController.product.value.name,
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w600),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ProductCarouselSlider(
+                        images: productController.product.value.images,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        '\$${productController.product.value.price.toStringAsFixed(2)}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Wrap(
-                        spacing: 4,
-                        runSpacing: 4,
-                        children: productController.product.value.items
-                            .map(
-                              (item) => SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width / 5 - 20,
-                                child: ProductSelectableItem(
-                                  item: item,
-                                  selected:
-                                      _itemSelectedMap[item.number] ?? false,
-                                  onSelected: (selected) =>
-                                      _onItemSelected(item.number, selected),
-                                ),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          height: 10,
-                          width: 300, // set a fixed height for the row
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 7,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          const BorderRadius.horizontal(
-                                        left: Radius.circular(10),
-                                      ),
-                                      color: Colors.green[800]),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 8,
-                                child: Container(
-                                  color: Colors.green[300],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 23,
-                                child: Container(
-                                  color: Colors.yellow[700],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 7,
-                                child: Container(
-                                  color: Colors.orange[700],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 55,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          const BorderRadius.horizontal(
-                                        right: Radius.circular(10),
-                                      ),
-                                      color: Colors.red[800]),
-                                ),
-                              ),
-                            ],
-                          ),
+                      const SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          productController.product.value.name,
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w600),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'About this product:',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w500),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        productController.product.value.description,
-                        style: TextStyle(
-                            fontSize: 16, color: Colors.grey.shade700),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'R\$${productController.product.value.price.toStringAsFixed(2)}',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w400),
+                        ),
                       ),
-                    )
-                  ],
+                      const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'Exterior: Field-Tested',
+                          style: TextStyle(
+                              fontSize: 14, color: Colors.grey.shade700),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'Float: 0.15',
+                          style: TextStyle(
+                              fontSize: 14, color: Colors.grey.shade700),
+                        ),
+                      ),
+                      Container(
+                        height: 30,
+                        width: 320,
+                        alignment: const Alignment((0.15 * 2) - 1, 0),
+                        child: Icon(
+                          Icons.arrow_drop_down,
+                          size: 30,
+                          color: Colors.grey.shade700,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        height: 10,
+                        width: 320, // set a fixed height for the row
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 300 * 0.07,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.horizontal(
+                                      left: Radius.circular(10),
+                                    ),
+                                    color: Colors.green[800]),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 300 * 0.08,
+                              child: Container(
+                                color: Colors.green[300],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 300 * 0.23,
+                              child: Container(
+                                color: Colors.yellow[700],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 300 * 0.07,
+                              child: Container(
+                                color: Colors.orange[700],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 300 * 0.55,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.horizontal(
+                                      right: Radius.circular(10),
+                                    ),
+                                    color: Colors.red[800]),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Wrap(
+                          spacing: 4,
+                          runSpacing: 4,
+                          children: productController.product.value.items
+                              .map(
+                                (item) => SizedBox(
+                                  width: MediaQuery.of(context).size.width / 5 -
+                                      20,
+                                  child: ProductSelectableItem(
+                                    item: item,
+                                    selected:
+                                        _itemSelectedMap[item.number] ?? false,
+                                    onSelected: (selected) =>
+                                        _onItemSelected(item.number, selected),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
               bottomNavigationBar: Padding(
