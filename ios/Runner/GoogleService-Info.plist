@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1043303772742-81u64tk4nr98v7ss2a7nt13dhtv4jhuh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1043303772742-81u64tk4nr98v7ss2a7nt13dhtv4jhuh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBzb3kfIVtcxucM_TBQ1WjWvyoy1j5ncEI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1043303772742</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vndapps.rifaapp</string>
+	<key>PROJECT_ID</key>
+	<string>vnd-rifa-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vnd-rifa-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1043303772742:ios:b64e4de8c150dd0c5c5047</string>
+</dict>
+</plist>
