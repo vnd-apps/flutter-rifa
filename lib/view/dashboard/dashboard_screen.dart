@@ -33,10 +33,7 @@ class DashboardScreen extends StatelessWidget {
               border: Border(
                   top: BorderSide(
                       color: Theme.of(context).colorScheme.secondary,
-                      width: 0.7
-                  )
-              )
-          ),
+                      width: 0.7))),
           child: SnakeNavigationBar.color(
             behaviour: SnakeBarBehaviour.floating,
             snakeShape: SnakeShape.circle,
@@ -46,18 +43,26 @@ class DashboardScreen extends StatelessWidget {
             unselectedItemColor: Theme.of(context).colorScheme.secondary,
             showUnselectedLabels: true,
             currentIndex: controller.tabIndex,
-            onTap: (val){
+            onTap: (val) {
               controller.updateIndex(val);
             },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Category'),
-              BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
-              BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account')
+            items: [
+              _bottomNavigationBarItem(icon: Icons.home, label: 'home'),
+              _bottomNavigationBarItem(icon: Icons.category, label: 'category'),
+              _bottomNavigationBarItem(icon: Icons.menu, label: 'menu'),
+              _bottomNavigationBarItem(
+                  icon: Icons.account_circle, label: 'account')
             ],
           ),
         ),
       ),
+    );
+  }
+
+  _bottomNavigationBarItem({required IconData icon, required String label}) {
+    return BottomNavigationBarItem(
+      icon: Icon(icon),
+      label: label,
     );
   }
 }
