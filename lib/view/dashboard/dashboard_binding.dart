@@ -10,12 +10,12 @@ import 'package:my_grocery/controller/product_controller.dart';
 class DashboardBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(DashboardController());
-    Get.put(HomeController());
-    Get.put(ProductController());
-    Get.put(CategoryController());
-    Get.put(AuthController());
-    Get.put(CartController());
-    Get.put(OrderController());
+    Get.lazyPut<DashboardController>(() => DashboardController());
+    Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => ProductController());
+    Get.lazyPut(() => CategoryController());
+    Get.lazyPut(() => AuthController());
+    Get.lazyPut(() => CartController());
+    Get.lazyPut(() => OrderController());
   }
 }
